@@ -25,6 +25,9 @@
 	  <Reference Include="MMHOOK_RoR2">
 	    <HintPath>C:\Users\Pc\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dev\BepInEx\plugins\MMHOOK\MMHOOK_RoR2.dll</HintPath>
 	  </Reference>
+	  <Reference Include="RiskOfOptions">
+	    <HintPath>C:\Users\Pc\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dev\BepInEx\plugins\Rune580-Risk_Of_Options\RiskOfOptions\RiskOfOptions.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 	
 </Project>
