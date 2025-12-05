@@ -6,6 +6,7 @@ using R2API.Utils;
 using RoR2;
 using RiskOfOptions;
 using RiskOfOptions.Options;
+using UnityEngine;
 
 namespace ParrySfx
 {
@@ -23,20 +24,19 @@ namespace ParrySfx
         public const String PluginName = "ParrySFX";
         public const String PluginVersion = "1.0.0";
 
-        public static ConfigEntry<string> ParrySoundType { get; set; }
+        public static ConfigEntry<SfxEnum> ParrySoundType { get; set; }
         public static ConfigEntry<float> Volume {  get; set; }
 
         public void Awake()
         {
             Log.Init(Logger);
 
-            ParrySoundType = Config.Bind("Parry SFX", "ParrySoundIndex", "3S", "Controls which sound effect to play on a successful parry.");
-            Volume = Config.Bind("Parry SFX", "Volume", 0.5f, "Controls the volume of the sound effect.");
+            ParrySoundType = Config.Bind("Parry SFX", "ParrySoundIndex", SfxEnum.ThirdStrike, "Controls which sound effect to play on a successful parry.");
+            Volume = Config.Bind("Parry SFX", "Volume", 0.5f, "[unimplemented] Controls the volume of the sound effect.");
 
             if(BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions"))
             {
-                //TODO: change this to use the enum
-                ModSettingsManager.AddOption(new StringInputFieldOption(ParrySoundType));
+                ModSettingsManager.AddOption(new ChoiceOption(ParrySoundType));
                 ModSettingsManager.AddOption(new SliderOption(Volume));
             }
         }
@@ -56,16 +56,17 @@ namespace ParrySfx
             orig(self, damageInfo);
         }
 
-        private string ChooseParrySfx(string sfxType)
+        private string ChooseParrySfx(SfxEnum sfxType)
         {
-            //TODO: change this to use the enum
             switch (sfxType) {
-                case "ThirdStrike":
-                    return "ParrySuccess";
-                case "MeltyBlood":
-                    return "ParryShield";
+                case SfxEnum.ThirdStrike:
+                case SfxEnum.PizzaTower:
+                    return sfxType.ToString();
+                case SfxEnum.MeltyBlood:
+                    UnityEngine.Random.Range(0, 3);
+                    return sfxType.ToString();
                 default:
-                    return "ParrySuccess";
+                    return "ThirdStrike";
             }
         }
 
