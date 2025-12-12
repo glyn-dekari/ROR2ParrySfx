@@ -2,8 +2,6 @@
 using BepInEx;
 using R2API;
 using RoR2;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace ParrySfx
 {
