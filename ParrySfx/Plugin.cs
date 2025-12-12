@@ -29,7 +29,6 @@ namespace ParrySfx
         { 
             if (self.body.HasBuff(RoR2.DLC3Content.Buffs.Parrying))
             {
-                Log.Info("[ParrySfx] Parry success, attempting to play sound on " + self.gameObject.ToString());
                 Util.PlaySound("ThirdStrike", self.gameObject);
             }
             orig(self, damageInfo);
