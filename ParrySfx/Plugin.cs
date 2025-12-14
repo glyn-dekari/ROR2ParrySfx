@@ -1,6 +1,6 @@
-﻿using System;
-using BepInEx;
+﻿using BepInEx;
 using R2API;
+using R2API.Utils;
 using RoR2;
 
 namespace ParrySfx
@@ -8,13 +8,14 @@ namespace ParrySfx
 
     [BepInDependency(SoundAPI.PluginGUID)]
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
+    [NetworkCompatibility(CompatibilityLevel.NoNeedForSync)]
 
     public class ParrySfx : BaseUnityPlugin
     {
-        public const String PluginGUID = PluginAuthor + "." + PluginName;
-        public const String PluginAuthor = "Glyn";
-        public const String PluginName = "ParrySFX";
-        public const String PluginVersion = "1.0.0";
+        public const string PluginGUID = PluginAuthor + "." + PluginName;
+        public const string PluginAuthor = "Glyn";
+        public const string PluginName = "ParrySFX";
+        public const string PluginVersion = "1.0.0";
 
         public void Awake()
         {
