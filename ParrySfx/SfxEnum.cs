@@ -8,6 +8,7 @@ namespace ParrySfx
     {
         ThirdStrike,
         MeltyBlood,
-        PizzaTower
+        PizzaTower,
+        ULTRAKILL
     }
 }
