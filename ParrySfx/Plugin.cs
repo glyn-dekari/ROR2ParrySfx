@@ -38,7 +38,7 @@ namespace ParrySfx
 
             if(BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions"))
             {
-                ModSettingsManager.SetModIcon(LoadAssets.Bundle.LoadAsset<Sprite>("assets/modassets/thumbnail.png"));
+                ModSettingsManager.SetModIcon(LoadAssets.Bundle.LoadAsset<Sprite>("assets/modassets/thumbnail.png"), PluginGUID, PluginName);
                 ModSettingsManager.SetModDescription("Adds various parry sound effects.");
 
                 ModSettingsManager.AddOption(new ChoiceOption(ParrySoundType));
