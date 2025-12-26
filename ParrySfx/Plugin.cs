@@ -6,6 +6,7 @@ using RoR2;
 using RiskOfOptions;
 using RiskOfOptions.Options;
 using UnityEngine;
+using System.Runtime.CompilerServices;
 
 namespace ParrySfx
 {
@@ -30,11 +31,16 @@ namespace ParrySfx
         {
             Log.Init(Logger);
 
-            ParrySoundType = Config.Bind("Parry SFX", "ParrySoundIndex", SfxEnum.ThirdStrike, "Controls which sound effect to play on a successful parry.");
+            LoadAssets.Init(Info);
+
+            ParrySoundType = Config.Bind("Parry SFX", "ParrySoundType", SfxEnum.ThirdStrike, "Controls which sound effect to play on a successful parry.");
             //Volume = Config.Bind("Parry SFX", "Volume", 0.5f, "[unimplemented] Controls the volume of the sound effect.");
 
             if(BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions"))
             {
+                ModSettingsManager.SetModIcon(LoadAssets.Bundle.LoadAsset<Sprite>("assets/modassets/thumbnail.png"));
+                ModSettingsManager.SetModDescription("Adds various parry sound effects.");
+
                 ModSettingsManager.AddOption(new ChoiceOption(ParrySoundType));
                 //ModSettingsManager.AddOption(new SliderOption(Volume));
             }
